@@ -14,52 +14,112 @@ img.logo {
 
 .frame {
     margin: 64px 55px;
+
     &.intro {
         max-width: 1163px;
         display: flex;
         flex-wrap: wrap;
         gap: 32px;
+
         .column {
             flex: 1 1 calc(50% - 32px);
+
             &:first-child {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 gap: 48px;
-                > .title {
+
+                >.title {
                     font-size: 32px;
                     line-height: 41.6px;
                     font-weight: 500;
+
                     .break-option {
                         color: #5773FF;
                     }
                 }
+
                 .pack {
                     .title {
                         font-size: 24px;
                         line-height: 36px;
                         font-weight: 400;
                     }
+
                     .items {
                         border-left: 4px solid #5773FF;
-                        padding-left: 16px;
-                        > div {
+                        padding-left: 12px;
+
+                        >div {
                             font-size: 24px;
                             font-weight: 500;
                             line-height: 31.2px;
                             margin-bottom: 16px;
+
                             &:last-child {
                                 margin-bottom: 0;
                             }
                         }
                     }
+
                     .divider {
                         margin: 12px 0;
                         height: 1px;
                         background-color: #00000012;
                     }
+
+                    .buttons {
+                        margin-top: 48px;
+                    }
+                }
+            }
+
+            &:last-child {
+                .top-graph {
+                    position: relative;
+                    line-height: 0;
+                    .now,.after {
+                        position: absolute;
+                        color: #FFFFFF;
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 23px;
+                    }
+                    .now {
+                        left: 20.28218695%;
+                        top:27.7904328%;
+                    }
+                    .after {
+                        left: 70.4%;
+                        top:78.5%;
+                    }
+                }
+                .bottom-graphs {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 16px;
                 }
             }
         }
+    }
+}
+
+button.button {
+    background-color: #5773FF;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #fff;
+    font-family: "IBM Plex Sans", serif;
+    font-style: normal;
+    border-radius: 72px;
+    padding: 16px 24px;
+    span {
+        display: inline-flex;
+        gap: 12px;
+        align-items: center;
     }
 }
