@@ -1,0 +1,19 @@
+<div class="page-container">
+    <h1>Simulate Quiz Page</h1>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Select par option</mat-label>
+            <mat-select [formControl]="breakSelect">
+                <mat-option value="break-par">Break Par</mat-option>
+                <mat-option value="break-80">Break 80</mat-option>
+                <mat-option value="break-90">Break 90</mat-option>
+                <mat-option value="break-100">Break 100</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <a [routerLink]="['solution', breakSelect.value]" mat-flat-button>
+            Go to landing page
+        </a>
+    </div>
+</div>
