@@ -12,17 +12,25 @@ img.logo {
     height: 32px;
 }
 
-.frame {
+.divider {
+    margin: 12px 0;
+    height: 1px;
+    background-color: #00000012;
+}
+
+.section {
     margin: 64px 55px;
 
     &.intro {
-        max-width: 1163px;
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         gap: 32px;
+        padding-bottom: 158px;
 
         .column {
             flex: 1 1 calc(50% - 32px);
+            max-width: 567px;
 
             &:first-child {
                 display: flex;
@@ -63,12 +71,6 @@ img.logo {
                         }
                     }
 
-                    .divider {
-                        margin: 12px 0;
-                        height: 1px;
-                        background-color: #00000012;
-                    }
-
                     .buttons {
                         margin-top: 48px;
                     }
@@ -79,27 +81,108 @@ img.logo {
                 .top-graph {
                     position: relative;
                     line-height: 0;
-                    .now,.after {
+
+                    .now,
+                    .after {
                         position: absolute;
                         color: #FFFFFF;
                         font-size: 16px;
                         font-weight: 500;
                         line-height: 23px;
                     }
+
                     .now {
                         left: 20.28218695%;
-                        top:27.7904328%;
+                        top: 27.7904328%;
                     }
+
                     .after {
                         left: 70.4%;
-                        top:78.5%;
+                        top: 78.5%;
                     }
                 }
+
                 .bottom-graphs {
                     display: flex;
                     justify-content: space-between;
                     width: 100%;
                     margin-top: 16px;
+                }
+            }
+        }
+    }
+
+    &.video {
+        max-width: 1250px;
+        padding-top: 64px;
+
+        >.title {
+            font-weight: 500;
+            font-size: 48px;
+            line-height: 62px;
+            color: #5773FF;
+        }
+        
+        .media-container {
+            display: flex;
+            gap: 48px;
+            .column {
+                &.video {
+                    video {
+                        width: 746px;
+                    }
+                }
+
+                &.progress {
+                    .container {
+                        background-color: #FFFFFF;
+                        padding: 5.5px;
+                        height: 100%;
+                        box-sizing: border-box;
+                        border-radius: 20px;
+                        .bar {
+                            background-color: #5773FF;
+                            border-radius: 8px;
+                            width: 5px;
+                            height: 64px;
+                        }
+                    }
+                }
+
+                &.collapsible {
+                    .title {
+                        display: flex;
+                        align-items: center;
+                        color: #5773FF;
+                        font-weight: 500;
+                        font-size: 24px;
+                        line-height: 31.2px;
+                        gap: 4px;
+                        padding-top: 3.5px;
+                        padding-bottom: 3.5px;
+                        box-sizing: border-box;
+                        .chevron {
+                            width: 24px;
+                            height: 24px;
+                            background: url('/chevron-down.svg') no-repeat center center;
+                        }
+                    }
+                    .item.open {
+                        .title .chevron {
+                            transform: rotate(180deg);
+                        }
+                        .content {
+                            display: block;
+                        }
+                    }
+                    .content {
+                        font-weight: 400px;
+                        font-size: 20px;
+                        line-height: 30px;
+                        padding: 12px 0;
+                        box-sizing: border-box;
+                        display: none;
+                    }
                 }
             }
         }
@@ -117,6 +200,7 @@ button.button {
     font-style: normal;
     border-radius: 72px;
     padding: 16px 24px;
+
     span {
         display: inline-flex;
         gap: 12px;
