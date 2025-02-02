@@ -6,6 +6,7 @@
     font-family: "IBM Plex Sans", serif;
     font-style: normal;
     color: #000000;
+    box-sizing: border-box;
 }
 
 img.logo {
@@ -22,7 +23,6 @@ img.logo {
     margin: 64px 55px;
 
     &.intro {
-        width: 100%;
         display: flex;
         flex-wrap: wrap;
         gap: 32px;
@@ -220,4 +220,15 @@ button.button {
         gap: 12px;
         align-items: center;
     }
+}
+
+footer {
+    text-align: center;
+    background-color: #000000;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.32px;
+    color: #FFFFFF;
+    padding: 24px 0;
 }
