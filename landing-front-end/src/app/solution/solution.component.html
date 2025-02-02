@@ -1,6 +1,6 @@
 <div class="page-container">
     <img src="/hack-motion-logo.svg" class="logo">
-    <div class="frame intro">
+    <div class="section intro">
         <div class="column">
             <div class="title">
                 We have put together a swing improvement solution to help you <span class="break-option">break 80</span>
@@ -31,6 +31,36 @@
             <div class="bottom-graphs">
                 <img src="/improvement-progress-bar.svg">
                 <img src="/frame-4151178.svg">
+            </div>
+        </div>
+    </div>
+    <div class="section video">
+        <div class="title">The best solution for you: Impact Training Program</div>
+        <div class="divider"></div>
+        <div class="media-container">
+            <div class="column video">
+                <video #video controls (play)="updateVideoProgress(video)" (seeked)="updateVideoProgress(video)">
+                    <source src="/Impact-Drill.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="column progress">
+                <div class="container vertical">
+                    <div class="bar" [style.height.%]="duration()"></div>
+                </div>
+                <div class="container horizontal">
+                    <div class="bar" [style.width.%]="duration()"></div>
+                </div>
+            </div>
+            <div class="column collapsible">
+                @for (item of timestampedContent; track $index) {
+                    <div class="item" [class.open]="item.open()">
+                        <div class="title">
+                            <div class="chevron"></div>
+                            {{ item.title }}
+                        </div>
+                        <div class="content">{{ item.content }}</div>
+                    </div>
+                }
             </div>
         </div>
     </div>
