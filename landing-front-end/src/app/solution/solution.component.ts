@@ -1,4 +1,5 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 interface ITimestampedContent {
   startTime: number
@@ -7,13 +8,21 @@ interface ITimestampedContent {
   open: WritableSignal<boolean>
 }
 
+const parOptionMap:{[index:string]:string} = {
+  'break-par': 'Break Par',
+  'break-80': 'Break 80',
+  'break-90': 'Break 90',
+  'break-100': 'Break 100',
+
+}
+
 @Component({
   selector: 'app-solution',
   imports: [],
   templateUrl: './solution.component.html',
   styleUrl: './solution.component.scss'
 })
-export class SolutionComponent {
+export class SolutionComponent implements OnInit {
 
   public readonly duration = signal(0)
   public readonly timestampedContent: ITimestampedContent[] = [
@@ -36,8 +45,18 @@ export class SolutionComponent {
       open: signal(false)
     }
   ]
+  public readonly parOption = signal('')
 
   private activeItem: ITimestampedContent = this.timestampedContent[0]
+
+  constructor(
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit(): void {
+    const par:string = this.route.snapshot.params['par']
+    this.parOption.set(parOptionMap[par])
+  }
 
   updateVideoProgress(video: HTMLVideoElement): void {
     window.requestAnimationFrame(() => {
