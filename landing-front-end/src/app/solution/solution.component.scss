@@ -110,11 +110,13 @@ img.logo {
                     justify-content: space-between;
                     width: 100%;
                     margin-top: 16px;
+
                     .improvement-progress-bar {
                         background: no-repeat url('/improvement-progress-bar.svg') center;
                         width: 274px;
                         height: 274px;
                     }
+
                     .frame-4151178 {
                         background: no-repeat url('/frame-4151178.svg') center;
                         width: 274px;
@@ -308,30 +310,47 @@ footer {
     .logo {
         display: none;
     }
+
     .page-container {
         padding-top: 0;
     }
+
     .section {
         margin-left: 16px;
         margin-right: 16px;
+
         &.intro {
             margin-top: 32px;
             margin-bottom: 16px;
+
             .column {
                 &:last-child {
                     .top-graph {
                         background-image: url('/improvement-graph-small.svg');
                         width: 328px;
                         height: 323px;
+
+                        .now {
+                            left: 25%;
+                            top: 32.5%;
+                        }
+
+                        .after {
+                            left: 43.4%;
+                            top: 69.5%;
+                        }
                     }
+
                     .bottom-graphs {
                         flex-direction: column;
                         gap: 16px;
+
                         .improvement-progress-bar {
                             background-image: url('/improvement-progress-bar-small.svg');
                             width: 328px;
                             height: 258px;
                         }
+
                         .frame-4151178 {
                             background-image: url('/frame-4151178-small.svg');
                             width: 328px;
@@ -341,16 +360,20 @@ footer {
                 }
             }
         }
+
         &.video {
             padding-top: 0px;
             margin-top: 32px;
+
             .title {
                 font-size: 32px;
                 line-height: 41.6px;
             }
+
             .divider {
                 margin: 16px 0;
             }
+
             .media-container {
                 gap: 32px;
             }
