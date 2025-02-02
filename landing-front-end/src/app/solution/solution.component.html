@@ -39,37 +39,28 @@
         <div class="divider"></div>
         <div class="media-container">
             <div class="column video">
-                <video controls>
+                <video #video controls (play)="updateVideoProgress(video)" (seeked)="updateVideoProgress(video)">
                     <source src="/Impact-Drill.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="column progress">
-                <div class="container">
-                    <div class="bar"></div>
+                <div class="container vertical">
+                    <div class="bar" [style.height.%]="duration()"></div>
+                </div>
+                <div class="container horizontal">
+                    <div class="bar" [style.width.%]="duration()"></div>
                 </div>
             </div>
             <div class="column collapsible">
-                <div class="item open">
-                    <div class="title">
-                        <div class="chevron"></div>
-                        Static top drill
+                @for (item of timestampedContent; track $index) {
+                    <div class="item" [class.open]="item.open()">
+                        <div class="title">
+                            <div class="chevron"></div>
+                            {{ item.title }}
+                        </div>
+                        <div class="content">{{ item.content }}</div>
                     </div>
-                    <div class="content">Get a feel for the optimal wrist position at Top of your swing</div>
-                </div>
-                <div class="item">
-                    <div class="title">
-                        <div class="chevron"></div>
-                        Dynamic top drill
-                    </div>
-                    <div class="content">Dynamically train your wrist position at Top</div>
-                </div>
-                <div class="item">
-                    <div class="title">
-                        <div class="chevron"></div>
-                        Top full swing challenge
-                    </div>
-                    <div class="content">Train your maximum power swing</div>
-                </div>
+                }
             </div>
         </div>
     </div>
