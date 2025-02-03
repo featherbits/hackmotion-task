@@ -2,12 +2,14 @@ services:
   spa:
     build:
       dockerfile: front-end.Dockerfile
+      args:
+        - AnalyticsServicePort=${AnalyticsServicePort}
     image: hackmotion-spa
     container_name: hackmotion-spa
     restart: unless-stopped
     working_dir: /var/hackmotion
     ports:
-      - 4000:4000
+      - ${FrontEndPort}:4000
     networks:
       - hackmotion
   analytics:
@@ -18,7 +20,7 @@ services:
     restart: unless-stopped
     working_dir: /var/hackmotion
     ports:
-      - 8080:8080
+      - ${AnalyticsServicePort}:8080
     networks:
       - hackmotion
 networks:
