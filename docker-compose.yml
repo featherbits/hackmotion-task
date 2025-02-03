@@ -1,0 +1,26 @@
+services:
+  spa:
+    build:
+      dockerfile: front-end.Dockerfile
+    image: hackmotion-spa
+    container_name: hackmotion-spa
+    restart: unless-stopped
+    working_dir: /var/hackmotion
+    ports:
+      - 4000:4000
+    networks:
+      - hackmotion
+  analytics:
+    build:
+      dockerfile: back-end.Dockerfile
+    image: hackmotion-analytics
+    container_name: hackmotion-analytics
+    restart: unless-stopped
+    working_dir: /var/hackmotion
+    ports:
+      - 8080:8080
+    networks:
+      - hackmotion
+networks:
+  hackmotion:
+    driver: bridge

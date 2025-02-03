@@ -1,3 +1,3 @@
 export const environment = {
-    analyticsSvcUrl: 'http://localhost:5052'
+    analyticsSvcUrl: 'http://localhost:8080'
 };
