@@ -1,5 +1,6 @@
 import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AnalyticsEvent, AnalyticsService } from '../../services/analytics.service';
 
 interface ITimestampedContent {
   startTime: number
@@ -8,7 +9,7 @@ interface ITimestampedContent {
   open: WritableSignal<boolean>
 }
 
-const parOptionMap:{[index:string]:string} = {
+const parOptionMap: { [index: string]: string } = {
   'break-par': 'Break Par',
   'break-80': 'Break 80',
   'break-90': 'Break 90',
@@ -50,12 +51,14 @@ export class SolutionComponent implements OnInit {
   private activeItem: ITimestampedContent = this.timestampedContent[0]
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private analytics: AnalyticsService
   ) { }
 
   ngOnInit(): void {
-    const par:string = this.route.snapshot.params['par']
+    const par: string = this.route.snapshot.params['par']
     this.parOption.set(parOptionMap[par])
+    this.analytics.logEvent(AnalyticsEvent.PageView).subscribe()
   }
 
   updateVideoProgress(video: HTMLVideoElement): void {
@@ -79,5 +82,11 @@ export class SolutionComponent implements OnInit {
 
       if (!video.paused) this.updateVideoProgress(video)
     })
+  }
+
+  onVideoEnd(): void {
+    if (this.timestampedContent[this.timestampedContent.length - 1].open()) {
+      this.analytics.logEvent(AnalyticsEvent.VideoCompleted).subscribe()
+    }
   }
 }

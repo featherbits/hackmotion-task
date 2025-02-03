@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(cors => cors.AddDefaultPolicy(policy => policy.AllowAnyHeader().AllowAnyOrigin()));
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -17,10 +19,12 @@ builder.Services.AddOpenApiDocument(config =>
 builder.Services.AddDataProtection()
     .SetApplicationName("AnalyticsService");
 
-builder.Services.AddSingleton<IAnalyticsDataAccess,LoggingAnalyticsDataAccess>();
-builder.Services.AddSingleton<IAnalyticsService,DefaultAnalyticsService>();
+builder.Services.AddSingleton<IAnalyticsDataAccess, LoggingAnalyticsDataAccess>();
+builder.Services.AddSingleton<IAnalyticsService, DefaultAnalyticsService>();
 
 var app = builder.Build();
+
+app.UseCors();
 
 if (app.Environment.IsDevelopment())
 {

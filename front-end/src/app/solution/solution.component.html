@@ -38,7 +38,7 @@
         <div class="divider"></div>
         <div class="media-container">
             <div class="column video">
-                <video #video controls (play)="updateVideoProgress(video)" (seeked)="updateVideoProgress(video)">
+                <video #video controls (play)="updateVideoProgress(video)" (seeked)="updateVideoProgress(video)" (ended)="onVideoEnd()">
                     <source src="/Impact-Drill.mp4" type="video/mp4">
                 </video>
             </div>
